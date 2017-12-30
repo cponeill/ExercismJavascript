@@ -3,6 +3,8 @@ var reverseString = function(str) {
 
   // Assign "str" to array and reverse it.
   let arr = [...this.str].reverse();
+
+  // If str is empty, return '', else return str backwards.
   if (!this.str) {
     return '';
   }
