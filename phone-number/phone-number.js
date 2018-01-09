@@ -1,9 +1,18 @@
-var PhoneNumber = function() {};
+class PhoneNumber {
+  constructor(number) {
+    this.number = number;
+  }
 
-PhoneNumber.prototype.number = function(num) {
-	let newNum = ("" + num).replace(/\D/g, '');
-	let m = newNum.match(/^(\d{3})(\d{3})(\d{4})$/);
-  return null ? null : m[0];
+  number() {
+    let cleanedNumber = this.number.replace(/\D/g, '');
+    let match = cleanedNumber.match(/^1?([2-9][0-9]{2}[2-9][0-9]{2}[0-9]{4})$/);
+    if (!match) {
+      return null;
+    }
+    else {
+      return match[1];
+    }
+  }
 }
 
 module.exports = PhoneNumber;
