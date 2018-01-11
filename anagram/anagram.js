@@ -1,21 +1,28 @@
-class Anagram {
-  constructor(word) {
-    this.word = word;
-    this.array = [];
+var Anagram = function(word) {
+  this.word = word.toUpperCase();
+};
 
-    // Loop through word and push each letter to array.
-    for (let i = 0; i <= this.word.length - 1; i++) {
-      this.array.push(this.word[i]);
-    }
+var anagram = function(word) {
+  return new Anagram(word);
+};
 
-    // Sort the array in alphabetical order.
-    this.word = this.array.sort();
+Anagram.prototype.matches = function(wordArray) {
+  if (!wordArray instanceof Array) {
+    var args = arguments;
+    wordArray = Object.keys(args).map(function(key) {
+      return args[key];
+    });
   }
 
-  matches(list) {
-    // Loop through list of words.
-    for (let i = 0; i <= list.length; i++) {
-      
-    }
-  }
+  let createLetters = function(word) {
+    return word.toLowerCase().split('').sort().join('');
+  };
+  let letters = createLetters(this.word), anagram = this.word;
+  let anagrams = function(word) {
+    return createLetters(word) === letters && word.toLowerCase() !== anagram;
+  };
+
+  return wordArray.filter(anagrams);
 }
+
+module.exports = Anagram;
