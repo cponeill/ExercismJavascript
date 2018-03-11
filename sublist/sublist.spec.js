@@ -9,7 +9,7 @@ describe('sublist', function () {
     expect(listOne.compare(listTwo)).toEqual('EQUAL');
   });
 
-  xit('an empty list is a sublist of a non-empty list', function () {
+  it('an empty list is a sublist of a non-empty list', function () {
     var listOne = new List();
     var listTwo = new List([1, 2, 3]);
 
